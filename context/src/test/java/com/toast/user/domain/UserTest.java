@@ -47,12 +47,11 @@ class UserTest {
     
     @Test
     void createShouldGenerateDifferentIdsForDifferentUsers() {
-        UserId id = UserId.generate();
         Name name = Name.load("John", "Doe");
         Age age = Age.load(25);
         
-        User user1 = User.create(id, name, age);
-        User user2 = User.create(id, name, age);
+        User user1 = User.create(UserId.generate(), name, age);
+        User user2 = User.create(UserId.generate(), name, age);
         
         assertNotEquals(user1.id(), user2.id());
     }
